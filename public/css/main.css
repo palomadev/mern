@@ -1,0 +1,182 @@
+@font-face {
+  font-family: jam-icons;
+  src: url("../assets/fonts/font-icons/jam-icons.eot");
+  /* IE9 Compat Modes */
+  src: url("../assets/fonts/font-icons/jam-icons.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../assets/fonts/font-icons/jam-icons.woff")
+      format("woff"),
+    /* Pretty Modern Browsers */ url("../assets/fonts/font-icons/jam-icons.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("../assets/fonts/font-icons/jam-icons.svg#svgFontName") format("svg");
+  /* Legacy iOS */
+}
+
+@font-face {
+  font-family: Raleway;
+  font-weight: 700;
+  src: url("../assets/fonts/Raleway/Raleway-Bold.ttf");
+}
+
+@font-face {
+  font-family: Raleway;
+  font-weight: 600;
+  src: url("../assets/fonts/Raleway/Raleway-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: Raleway;
+  font-weight: 500;
+  src: url("../assets/fonts/Raleway/Raleway-Medium.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 400;
+  src: url("../assets/fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 500;
+  src: url("../assets/fonts/Roboto/Roboto-Medium.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 300;
+  src: url("../assets/fonts/Roboto/Roboto-Light.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 100;
+  src: url("../assets/fonts/Roboto/Roboto-Thin.ttf");
+}
+
+* {
+  font-family: Roboto;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #fff;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  overflow: auto;
+}
+
+#root {
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+}
+
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.noBorder:focus,
+.form-control:focus,
+.form-control:active,
+.dropdown-item {
+  outline: none !important;
+  -webkit-box-shadow: none;
+}
+
+#scrollWrapper {
+  height: auto;
+  overflow-x: hidden;
+}
+
+.tableProjects table th {
+  width: 80px;
+}
+
+.tableProjects table td {
+  width: 0px;
+}
+.tableProjects .peopleName {
+  font-size: 14px;
+}
+
+.btnLogout {
+  font-size: 13px;
+  margin-top: -20px;
+  margin-right: -30px;
+}
+
+.nounderline {
+  text-decoration: none !important;
+}
+
+.react-datepicker-wrapper input {
+  width: 200px;
+  background-color: #666667;
+  color: white;
+  font-size: 13px;
+  padding: 7px;
+  outline: none !important;
+  -webkit-box-shadow: none;
+  border-width: inherit;
+  border: 0.5px solid;
+  border-radius: 0;
+  text-align: right;
+}
+
+.calendarFrom {
+  top: 30;
+}
+
+.custom-select {
+  border-radius: 1px;
+}
+
+#filter ul {
+  list-style: none; /* Remove list bullets */
+  padding: 0;
+  margin: 0;
+}
+
+#side p {
+  margin-bottom: -17px;
+  margin-top: -17px;
+}
+#side p:hover {
+  background-color: #666667;
+}
+#side p a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+#side p a.active {
+  background-color: #d84a37;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.tableScroll {
+  overflow-y: scroll;
+}
