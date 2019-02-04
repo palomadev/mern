@@ -6,18 +6,8 @@ export default class Layout extends Component {
     const { children } = this.props;
     return (
       <ErrorCatch>
-        <div className="d-flex flex-column" style={styles.flex}>
-          <div className="d-flex flex-row" style={styles.flex}>
-            {children}
-          </div>
-        </div>
+        {children}
       </ErrorCatch>
     );
   }
 }
-
-const styles = {
-  flex: {
-    flex: 1
-  }
-};
