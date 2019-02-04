@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import Api from "../../config/api";
+import Api from "../../util/api";
 import Wrapper from "../../components/Wrapper";
 import Sidebar from "../../components/Sidebar";
 import Alert from "../../components/Alert";
 import Loading from "../../components/Loading";
 import Button from "../../components/Button";
 import _ from "lodash";
-import SweetAlert from "sweetalert-react";
-import { COLORS } from "../../config/constants";
+// import SweetAlert from "sweetalert-react";
+import { COLORS } from "../../util/constants";
 
 const roles = new Array();
 roles[1] = "Super Admin";
@@ -206,7 +206,7 @@ class Edit extends Component {
         <Sidebar admin="admin" />
         <Wrapper title="Edit User" onClick={this.onLogout} hideLink>
           {editForm}
-          <SweetAlert show={alertShow} {...alertProps} />
+          {/* <SweetAlert show={alertShow} {...alertProps} /> */}
           <Loading
             show={loading}
             absolute

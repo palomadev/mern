@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Api from '../config/api';
+import Api from '../util/api';
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Loading from "../components/Loading";

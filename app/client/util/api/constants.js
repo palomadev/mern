@@ -9,4 +9,3 @@ export const CREATEUSER = 'user/create';
 export const UPDATEUSER = 'user/update';
 export const DELETEUSER = 'user/delete';
 export const EMAILVALIDATION = 'user/validation';
-export const GETAPPUSERS = 'users';

@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { CSVLink } from "react-csv";
-import Api from "../config/api";
+import Api from "../util/api";
 import Wrapper from "../components/Wrapper";
 import Sidebar from "../components/Sidebar";
 import Loading from "../components/Loading";
@@ -189,7 +188,6 @@ class Dashboard extends Component {
                     <div className="row"><b className="pr-2">Results:</b>{people.length}</div>
                   </div>
                   <div className="col-md-2 pl-5">
-                    <CSVLink data={people} headers={this.headers} filename={`${type || 'all'}_export.csv`} target="_self">EXPORT TO CSV</CSVLink>
                   </div>
                 </div>
                 <div

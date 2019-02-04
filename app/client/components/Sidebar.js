@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { FONTS } from "../config/constants";
+import { FONTS } from "../util/constants";
 import Filter from "./Filter";
 
 export default class Sidebar extends Component {

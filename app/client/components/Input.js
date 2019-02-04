@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { COLORS } from '../config/constants';
+import { COLORS } from '../util/constants';
 /**
  * The Input Component.
  *

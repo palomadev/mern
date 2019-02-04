@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { COLORS, FONTS } from '../config/constants.js';
+import { COLORS, FONTS } from '../util/constants.js';
 /**
  * The Select Input Component.
  *

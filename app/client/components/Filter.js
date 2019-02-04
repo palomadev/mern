@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { FONTS } from "../config/constants";
+import { FONTS } from "../util/constants";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
