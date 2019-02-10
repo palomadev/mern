@@ -322,48 +322,5 @@ class List extends Component {
       </Fragment>
     );
   }
-
-  getSaveAlertProps() {
-    return {
-      title: "Create User",
-      text: "Are you sure to create the user?",
-      showCancelButton: true,
-      confirmButtonColor: COLORS.Success,
-      onConfirm: this.saveUser.bind(this),
-      onCancel: () => this.setState({ alertShow: false })
-    };
-  }
-
-  getSuccessAlertProps(onClick) {
-    return {
-      title: "User Created",
-      text: `The user has been created successfully`,
-      type: "success",
-      confirmButtonColor: COLORS.Success,
-      onConfirm: onClick.bind(this)
-    };
-  }
-
-  getDeleteAlertProps(id) {
-    return {
-      title: "Delete User",
-      text: "Are you sure to delete the user?",
-      showCancelButton: true,
-      type: "info",
-      confirmButtonColor: COLORS.Danger,
-      onConfirm: this.deleteUser.bind(this, id),
-      onCancel: () => this.setState({ alertShow: false })
-    };
-  }
-
-  getSuccessDeleteAlertProps() {
-    return {
-      title: "User Deleted",
-      text: "The user has been deleted",
-      type: "success",
-      confirmButtonColor: COLORS.Success,
-      onConfirm: () => this.setState({ alertShow: false, loading: false })
-    };
-  }
 }
 export default connect(s => ({ account: s.account }))(List);

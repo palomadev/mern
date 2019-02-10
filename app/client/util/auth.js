@@ -1,6 +1,6 @@
 import React from 'react';
 import { setAccount } from '../redux/actions/account';
-import Api from './api';
+import Api from '../api';
 import ErrorCatch from '../components/ErrorCatch';
 import NotAllowed from '../routes/NotAllowed';
 import Layout from '../components/Layout';
