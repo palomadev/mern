@@ -1,7 +1,7 @@
 {
-  "name": "paloma-mern",
+  "name": "my-app",
   "version": "1.0.0",
-  "description": "MERN Project structure clean and beatiful for new projects",
+  "description": "my-app description",
   "main": "index.js",
   "scripts": {
     "start": "node ./app/server/index.js",
