@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-
-export default class Sidebar extends Component {
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+class Sidebar extends Component {
   render() {
+    const { account } = this.props;
     const Link = ({ to, name }) => (
       <NavLink exact to={to} activeClassName="active">
         {name}
@@ -21,3 +23,4 @@ export default class Sidebar extends Component {
     )
   }
 }
+export default connect(s => ({ account: s.account }))(Sidebar);

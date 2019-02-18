@@ -3,8 +3,7 @@ import { SET_ACCOUNT } from '../constants'
 const initialState = {
   _id: "",
   email: "",
-  firstName: "",
-  lastName: "",
+  name: "",
   tokenAuth:"",
   role: 2
 }

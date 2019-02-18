@@ -14,7 +14,7 @@ const methods = {
                 if (err) helpers.generalError({ code: 403, msg: 'Failed to authenticate token.' }, res);
                 else {
                     req.decoded = decoded;
-                    req.body.auth = { userId: decoded.userId };
+                    req.body.authId = decoded.authId;
                     next();
                 }
             });

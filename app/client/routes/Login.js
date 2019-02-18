@@ -14,19 +14,18 @@ export default class Login extends Component {
     const { email, password } = this.state;
     this.setState({ loading: true });
 
-    Api.Login({ email, password })
-      .then(res => {
-        const { status, data } = res;
-        let errorMessage = "";
-        if (status === 201) {
-          if (data.user.role > 2) errorMessage = "User not authorized";
-          else {
-            localStorage.setItem("tokenAuth", data.token);
-            this.props.history.push("/");
-          }
-        } else errorMessage = res.message;
-        this.setState({ loading: false, errorMessage });
-      })
+    Api.Login({ email, password }).then(res => {
+      const { status, data } = res;
+      let errorMessage = "";
+      if (status === 201) {
+        if (data.user.role > 2) errorMessage = "User not authorized";
+        else {
+          localStorage.setItem("tokenAuth", data.token);
+          this.props.history.push("/");
+        }
+      } else errorMessage = res.message;
+      this.setState({ loading: false, errorMessage });
+    })
       .catch(err => this.setState({ loading: false, errorMessage: err.message }));
   }
 

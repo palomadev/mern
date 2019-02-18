@@ -58,8 +58,8 @@ const model = {
     },
     getByToken: async data => {
         if (!data) throw { code: 400, msg: "Data is empty" };
-        if (!data.user_id) throw { code: 400, msg: "Id is required" };
-        const res = await user.getById(data.user_id);
+        if (!data.authId) throw { code: 400, msg: "Id is required" };
+        const res = await user.getById(data.authId);
         if (!res) throw { code: 400, msg: "User not found" };
         return res;
     }

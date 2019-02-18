@@ -6,7 +6,7 @@ class Dashboard extends Component {
   render() {
     return (
       <Wrapper>
-        Hello, {this.props.account.email}
+        Hello, {this.props.account.name}
       </Wrapper>
     );
   }
