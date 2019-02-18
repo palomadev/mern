@@ -12,12 +12,11 @@ class Sidebar extends Component {
 
     return (
       <div>
-        <h3>Paloma Dev</h3>
-        <hr />
+        <h3>Paloma</h3>
         <Link to="/profile" name="Profile" />
-        <hr />
+        <br/>
         <Link to="/" name="Dashboard" />
-        <hr />
+        <br/>
         {account.role === 1 && <Link to="/user" name="Admin Users" />}
       </div>
     )

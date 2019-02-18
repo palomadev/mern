@@ -15,6 +15,8 @@ class Wrapper extends Component {
         {title && <h5>{title}</h5>}
         <Sidebar />
         <button type="button" onClick={this.onLogout}>Logout</button>
+        <br />
+        <br />
         {children}
       </div>
     );
