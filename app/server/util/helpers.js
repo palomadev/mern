@@ -20,14 +20,13 @@ const methods = {
         const total = await user.getAll();
         if (total.length === 0) {
             const account = {
-                firstName: "Super",
-                lastName: "Admin",
+                name: "Super Admin",
                 email: "admin@paloma.com",
                 role: 1,
                 password: '12345678'
             };
             user.create(account);
-            console.log(`User admin Created: ${account.email}:${account.password}`);
+            console.log(`Super admin Created: ${account.email}:${account.password}`);
         } else console.log(total.length + " users can login.");
     },
     busboy: (callback, req) => {

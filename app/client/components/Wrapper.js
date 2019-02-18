@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Sidebar from "../components/Sidebar";
 
 class Wrapper extends Component {
   onLogout() {
@@ -12,6 +13,7 @@ class Wrapper extends Component {
     return (
       <div>
         {title && <h5>{title}</h5>}
+        <Sidebar />
         <button type="button" onClick={this.onLogout}>Logout</button>
         {children}
       </div>

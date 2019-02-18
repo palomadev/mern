@@ -17,8 +17,7 @@ const model = {
     },
     create: async data => {
         if (!data) throw { code: 400, msg: "Data is required" };
-        if (!data.firstName) throw { code: 400, msg: "First Name is required" };
-        if (!data.lastName) throw { code: 400, msg: "Last Name is required" };
+        if (!data.name) throw { code: 400, msg: "Name is required" };
         if (!data.email) throw { code: 400, msg: "Email is required" };
         if (!data.role) throw { code: 400, msg: "Role is required" };
         if (!data.password) throw { code: 400, msg: "Password is required" };
@@ -33,8 +32,7 @@ const model = {
     update: async data => {
         if (!data) throw { code: 400, msg: "Data is required" };
         if (!data.id) throw { code: 400, msg: "Id is required" };
-        if (!data.firstName) throw { code: 400, msg: "First Name is required" };
-        if (!data.lastName) throw { code: 400, msg: "Last Name is required" };
+        if (!data.name) throw { code: 400, msg: "Name is required" };
         if (!data.role) throw { code: 400, msg: "Role is required" };
 
         const existUser = await user.getById(data.id);

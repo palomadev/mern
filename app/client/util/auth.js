@@ -2,7 +2,7 @@ import React from 'react';
 import { setAccount } from '../redux/actions/account';
 import Api from '../api';
 import ErrorCatch from '../components/ErrorCatch';
-import NotAllowed from '../routes/NotAllowed';
+import NotAllowed from '../components/NotAllowed';
 import Layout from '../components/Layout';
 
 const auth = {
@@ -10,7 +10,7 @@ const auth = {
         const { tokenAuth } = localStorage;
         const sendToLogin = err => {
             if (!err) localStorage.removeItem('tokenAuth');
-            history.push('/panel/login');
+            history.push('/login');
         }
 
         Api.GetUserToken(tokenAuth).then(res => {
@@ -24,7 +24,7 @@ const auth = {
     authorize: (Composed, props, store, level) => {
         const { pathname } = props.history.location;
         const { account } = store.getState();
-        if (!localStorage.tokenAuth) props.history.push('/panel/login');
+        if (!localStorage.tokenAuth) props.history.push('/login');
         if (account._id) {
             if (account.role <= level) return <Layout account={account} ><Composed {...props} /></Layout>;
             else return <NotAllowed />;
