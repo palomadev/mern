@@ -1,33 +1,16 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import Api from "../../util/api";
+import Api from "../../api";
 import Wrapper from "../../components/Wrapper";
-import Sidebar from "../../components/Sidebar";
-import Alert from "../../components/Alert";
-import Loading from "../../components/Loading";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import _ from "lodash";
-// import SweetAlert from "sweetalert-react";
-import { COLORS } from "../../util/constants";
 
-const roles = new Array();
-roles[1] = "Super Admin";
-roles[2] = "Admin";
 class Profile extends Component {
   state = {
     id: "",
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
-    rol: "",
+    role: "",
     password: "",
-    re_password: "",
-    errorMessage: "",
-    loading: false,
-    alertProps: { title: "Alert" },
-    alertShow: false,
-    isPassword: false
+    repeat_password: ""
   };
 
   async componentWillMount() {
@@ -35,107 +18,30 @@ class Profile extends Component {
     await this.getUser(account._id);
   }
 
-  onLogout() {
-    localStorage.removeItem("tokenAuth");
-    window.location.reload();
-  }
-
   getUser = id => {
     const { account, history } = this.props;
-    this.setState({ loading: true });
 
     Api.GetUser(account.tokenAuth, id)
       .then(res => {
         if (res.status === 201) {
-          const { firstName, lastName, email, role } = res.data;
-          this.setState({
-            loading: false,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            rol: String(role)
-          });
-        } else history.push(`/panel/user`);
+          const { name, email, role } = res.data;
+          this.setState({ name, email, role });
+        } else history.push(`/user`);
       })
-      .catch(err => {
-        this.setState({ loading: false });
-        history.push("/panel/user");
-      });
+      .catch(err => { history.push("/user"); });
   };
 
-  back() {
+  cancelEdit() {
     const { history } = this.props;
     history.push(`/`);
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const { firstName, lastName, password, re_password } = this.state;
-    if (_.isEmpty(firstName))
-      return this.setState({ errorMessage: "First name is required" });
-    if (_.isEmpty(lastName))
-      return this.setState({ errorMessage: "Last name is required" });
-    if (password !== "") {
-      this.setState({ isPassword: true });
-      if (password.length < 6)
-        return this.setState({
-          errorMessage: "Password length must be higher or equal than 6"
-        });
-      if (password !== re_password)
-        return this.setState({ errorMessage: "Passwords do not match." });
-    }
-    this.setState({ alertShow: true, alertProps: this.getSaveAlertProps() });
-  }
-
-  editUser() {
     const { account } = this.props;
-    const {
-      firstName,
-      lastName,
-      email,
-      rol,
-      password,
-      isPassword
-    } = this.state;
-    let role = parseInt(rol);
-    let id = account._id;
-    const data = { firstName, lastName, email, role, password, id };
-    this.setState({ loading: true });
-    Api.UpdateUser(account.tokenAuth, data)
-      .then(res => {
-        if (res.status === 201) {
-          this.setState({ loading: false, alertShow: true });
-          let timer = setTimeout(() => {
-            this.setState({ alertShow: false }, () => {
-              !isPassword
-                ? this.props.history.push("/panel/profile")
-                : this.onLogout();
-                clearTimeout(timer);
-              }
-            );
-          }, 2000);
-          const alertProps = this.getSuccessAlertProps(() => {
-            this.setState({ alertShow: false }, () =>
-              !isPassword
-                ? this.props.history.push("/panel/profile")
-                : this.onLogout()
-            );
-          });
-          this.setState({ alertProps, errorMessage: "" });
-        } else {
-          this.setState({
-            loading: false,
-            errorMessage: res.message,
-            alertShow: false
-          });
-        }
-      })
-      .catch(err => {
-        this.setState({
-          errorMessage: err.message,
-          loading: false
-        });
-      });
+    const { name, email, role, password } = this.state;
+    const data = { name, email, role, password, id: account._id };
+    Api.UpdateUser(account.tokenAuth, data).then(res => { this.props.history.push("/") }).catch(err => { this.props.history.push("/") });
   }
 
   onChange(e) {
@@ -143,145 +49,61 @@ class Profile extends Component {
     this.setState({ [name]: value, errorMessage: "" });
   }
 
-  confirmData() {}
-
   render() {
-    const {
-      loading,
-      errorMessage,
-      firstName,
-      lastName,
-      email,
-      alertShow,
-      alertProps,
-      rol,
-      password,
-      re_password,
-    } = this.state;
+    const { name, email, role, password, repeat_password } = this.state;
     return (
-      <Fragment>
-        <Sidebar admin="admin" profile="profile" />
-        <Wrapper title="Profile" onClick={this.onLogout}>
-          <div className="mt-3">
-            <form onSubmit={this.onSubmit.bind(this)}>
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <small className="form-text text-muted">First Name</small>
-                  <input
-                    name="firstName"
-                    type="text"
-                    className="form-control"
-                    value={firstName}
-                    onChange={this.onChange.bind(this)}
-                  />
-                </div>
-                <div className="form-group col-md-6">
-                  <small className="form-text text-muted">Last Name</small>
-                  <input
-                    name="lastName"
-                    type="text"
-                    className="form-control"
-                    value={lastName}
-                    onChange={this.onChange.bind(this)}
-                  />
-                </div>
-                <div className="form-group col-md-6">
-                  <small className="form-text text-muted">Email</small>
-                  <input
-                    name="email"
-                    type="email"
-                    className="form-control"
-                    value={email}
-                    onChange={this.onChange.bind(this)}
-                    disabled
-                  />
-                </div>
-                <div className="form-group col-md-6">
-                  <small className="form-text text-muted">Role</small>
-                  <select
-                    className="form-control"
-                    name="rol"
-                    onChange={this.onChange.bind(this)}
-                    value={rol}
-                    disabled
-                  >
-                    <option value="1">Super Admin</option>
-                    <option value="2">Admin</option>
-                  </select>
-                </div>
-                <div className="form-group col-md-6">
-                  <small className="form-text text-muted">
-                    Password <span>(Optional)</span>
-                  </small>
-                  <input
-                    name="password"
-                    type="password"
-                    className="form-control"
-                    value={password}
-                    onChange={this.onChange.bind(this)}
-                  />
-                </div>
-                <div className="form-group col-md-6">
-                  <small className="form-text text-muted">
-                    Repeat Password <span>(Optional)</span>
-                  </small>
-                  <input
-                    name="re_password"
-                    type="password"
-                    className="form-control"
-                    value={re_password}
-                    onChange={this.onChange.bind(this)}
-                  />
-                </div>
-                <Button text="Update" filter />
-                <button
-                  type="button"
-                  className="btn btn-link text-muted nounderline "
-                  onClick={this.back.bind(this)}
-                  style={{ fontSize: 14 }}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-            <div className="pt-3">
-              <Alert type="danger" hide={!errorMessage}>
-                {errorMessage}
-              </Alert>
-            </div>
+      <Wrapper>
+        <h2>Edit Profile</h2>
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <div>
+            <small>Name</small>
+            <input
+              name="name"
+              type="text"
+              value={name}
+              onChange={this.onChange.bind(this)}
+            />
           </div>
-          {/* <SweetAlert show={alertShow} {...alertProps} /> */}
-          <Loading
-            show={loading}
-            absolute
-            backgroundClass="bg-gray"
-            textColor="#020202"
-            text="LOADING.."
-          />
-        </Wrapper>
-      </Fragment>
+          <div>
+            <small>Email</small>
+            <input
+              name="email"
+              type="email"
+              value={email}
+              disabled
+            />
+          </div>
+          <div>
+            <small>Role</small>
+            {role == 1 ? "Super Admin" : "Admin"}
+          </div>
+          <div>
+            <small>
+              Password <span>(Optional)</span>
+            </small>
+            <input
+              name="password"
+              type="password"
+              value={password}
+              onChange={this.onChange.bind(this)}
+            />
+          </div>
+          <div>
+            <small>
+              Repeat Password <span>(Optional)</span>
+            </small>
+            <input
+              name="repeat_password"
+              type="password"
+              value={repeat_password}
+              onChange={this.onChange.bind(this)}
+            />
+          </div>
+          <button type="submit">Save Changes</button>
+          <button type="button" onClick={this.cancelEdit.bind(this)}>Cancel</button>
+        </form>
+      </Wrapper>
     );
-  }
-
-  getSaveAlertProps() {
-    return {
-      title: "Update User",
-      text: "Are you sure to update the user?",
-      showCancelButton: true,
-      confirmButtonColor: COLORS.Success,
-      onConfirm: this.editUser.bind(this),
-      onCancel: () => this.setState({ alertShow: false, loading: false })
-    };
-  }
-
-  getSuccessAlertProps(onClick) {
-    return {
-      title: "User Updated",
-      text: `The user has been updated successfully`,
-      type: "success",
-      confirmButtonColor: COLORS.Success,
-      onConfirm: onClick.bind(this)
-    };
   }
 }
 export default connect(s => ({ account: s.account }))(Profile);
