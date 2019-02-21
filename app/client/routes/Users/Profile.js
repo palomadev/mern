@@ -56,7 +56,7 @@ class Profile extends Component {
         <h2>Edit Profile</h2>
         <form onSubmit={this.onSubmit.bind(this)}>
           <div>
-            <small>Name</small>
+            <label>Name</label>
             <input
               name="name"
               type="text"
@@ -65,7 +65,7 @@ class Profile extends Component {
             />
           </div>
           <div>
-            <small>Email</small>
+            <label>Email</label>
             <input
               name="email"
               type="email"
@@ -74,13 +74,11 @@ class Profile extends Component {
             />
           </div>
           <div>
-            <small>Role</small>
+            <label>Role</label>
             {role == 1 ? "Super Admin" : "Admin"}
           </div>
           <div>
-            <small>
-              Password <span>(Optional)</span>
-            </small>
+            <label>Password <span>(Optional)</span></label>
             <input
               name="password"
               type="password"
@@ -89,9 +87,7 @@ class Profile extends Component {
             />
           </div>
           <div>
-            <small>
-              Repeat Password <span>(Optional)</span>
-            </small>
+            <label>Repeat Password <span>(Optional)</span></label>
             <input
               name="repeat_password"
               type="password"

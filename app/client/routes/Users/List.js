@@ -18,11 +18,6 @@ class List extends Component {
     this.setState({ users });
   };
 
-  editUser(id) {
-    const { history } = this.props;
-    history.push(`/user/edit/${id}`);
-  }
-
   deleteUser(id) {
     const { account } = this.props;
 
@@ -32,11 +27,12 @@ class List extends Component {
   }
 
   render() {
+    const { history } = this.props;
     const { users } = this.state;
     return (
       <Wrapper>
         <h1>User's List</h1>
-        <button type="button">Add User</button>
+        <button onClick={() => history.push('/user/new')}>Add User</button>
         <table>
           <thead>
             <tr>
@@ -52,7 +48,7 @@ class List extends Component {
                   <td>{r.name}</td>
                   <td>{r.role == 1 ? "Super Admin" : "Admin"}</td>
                   <td>
-                    <a href="javascript:;" onClick={this.editUser.bind(this, r._id)}>Edit</a>
+                    <a href="javascript:;" onClick={() => history.push(`/user/edit/${r._id}`)}>Edit</a>
                     <a href="javascript:;" onClick={this.deleteUser.bind(this, r._id)}>Delete</a>
                   </td>
                 </tr>
