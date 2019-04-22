@@ -14,17 +14,11 @@ const methods = {
         const to = data.to || ['admin@truekonnect.com', 'alexander.guzman@serpicodev.com'];
         let mailOptions = {
             from: '"TrueKonnect Email Messages" <noreply@truekonnect.com>',
-            // to: ['admin@truekonnect.com','alexander.guzman@serpicodev.com'],
-            // to: ['Hildegard.wiggenhorn@serpicodev.com','alexander.guzman@serpicodev.com'],
             to,
             subject: data.subject || 'No Subject',
             html: htmlRendered
         };
-        
-        sendgrid.send(mailOptions).then(e => {
-            if (e && e.length > 0) console.log('Message sent: ' + e[0].statusMessage);
-            else console.log('Error: ' + e)
-        }).catch(console.log);
+        sendgrid.send(mailOptions);
     },
 }
 module.exports = methods;

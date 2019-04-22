@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -216,66 +217,45 @@
                 <table cellpadding="0" cellspacing="0" class="force-full-width">
                   <tr>
                     <td height="60" valign="top" class="header-cell">
-                      <img height="60" src="http://www.truekonnect.com/hosted/images/9c/e6f840db9611e886c2b9a6cda482b4/TrueKonnect-New-Logo-Retina-Transparent.png"
+                      <img height="60"
+                        src="http://www.truekonnect.com/hosted/images/9c/e6f840db9611e886c2b9a6cda482b4/TrueKonnect-New-Logo-Retina-Transparent.png"
                         alt="logo">
                     </td>
                   </tr>
                   <tr>
                     <td valign="top" class="body-cell">
-                      <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
-                        <tr>
-                          <td valign="top" style="padding-bottom:15px; background-color:#ffffff;">
-                            <h1>Truekonnect Report Message</h1>
-                            <h2>A user sent report</h2>
-                          </td>
-                        </tr>
-                      </table>
-                      <table cellspacing="0" cellpadding="0" width="100%">
-                        <tr>
-                          <td>
-                            <table cellpadding="0" cellspacing="0" width="82" height="82">
-                              <tr>
-                                <td style="text-align:left;border: 1px solid #808080;">
-                                  <img width="80" height="80" style="display:block" src="{{ reported.image }}">
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                          <td width="450" valign="middle" style="padding-bottom:20px; padding-left:20px; background-color:#ffffff; vertical-align:middle;">
-                            <h3>User Reported:</h3>
-                            <b>UUID : </b><span>{{ reported.uuid }}</span> <br />
-                            <b>FirstName : </b><span>{{ reported.firstName }}</span> <br />
-                            <b>LastName : </b><span>{{ reported.lastName }}</span> <br />
-                            <b>PhoneNumber : </b><span>{{ reported.phoneNumber }}</span> <br />
-                            <b>Email : </b><span>{{ reported.email }}</span> <br />
-                            <b>Type : </b><span>{{ reported.type }}</span> <br />
-                            <b>Message:</b>
-                            <p>{{ message }}</p>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <table cellpadding="0" cellspacing="0" width="82" height="82">
-                              <tr>
-                                <td style="text-align:left;border: 1px solid #808080;">
-                                  <img width="80" height="80" style="display:block" src="{{ reporter.image }}">
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                          <td width="450" valign="middle" style="padding-bottom:20px; padding-left:20px; background-color:#ffffff; vertical-align:middle;">
-                            <hr />
-                            <h3>Reported By:</h3>
-                            <b>UUID : </b><span>{{ reporter.uuid }}</span> <br />
-                            <b>FirstName : </b><span>{{ reporter.firstName }}</span> <br />
-                            <b>LastName : </b><span>{{ reporter.lastName }}</span> <br />
-                            <b>PhoneNumber : </b><span>{{ reporter.phoneNumber }}</span> <br />
-                            <b>Email : </b><span>{{ reporter.email }}</span> <br />
-                            <b>Type : </b><span>{{ reporter.type }}</span> <br />
-                          </td>
-                        </tr>
-                      </table>
+                      One of your friends invited you to <b>TrueKonnect!</b>
+                      <br>
+                      <br>
+                      The worlds first app that matches beauty pros and clients together.
+                      <br>
+                      <br>
+                      Use code: <b>{{ data.code }}</b> during signup to get your reward for joining our community!
+                      <br>
+                      <br>
+                      <div style="width: 100%; text-align: center ">
+                        <strong style="width: 100%; font-weight:700; font-family:arial; color:#009c7a">
+                          Download the TrueKonnect app today!</strong>
+                      </div>
+                      <br>
+                      <div style="width: 100%; text-align: center">
+                        <a href="https://itunes.apple.com/us/app/truekonnect/id1412159494"
+                          target="_blank">
+                          <img
+                            src="https://truekonnect.imgus11.com/public//e02718b7cb8720dabde039448533cd4e.png"
+                            width="229" />
+                        </a>
+                      </div>
+                      <br>
+                      <br>
+                      <div style="width: 100%; text-align: center">
+                        <a href="https://play.google.com/store/apps/details?id=com.serpicodev.truekonnect"
+                          target="_blank">
+                          <img
+                            src="https://truekonnect.imgus11.com/public//b77839c24ea0fbac45cc6440d8b21760.png"
+                            width="233" />
+                        </a>
+                      </div>
                     </td>
                   </tr>
                 </table>
