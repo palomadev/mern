@@ -25,3 +25,16 @@
 * {
   font-family: Roboto;
 }
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  display: block;
+  height: 100%
+}
+
+#root>div {
+  min-height: 100%
+}
