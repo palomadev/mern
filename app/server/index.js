@@ -43,7 +43,6 @@ app.use((err, req, res, next) => {
 });
 
 helpers.initApp();
-helpers.keepsAwakeHeroku();
 server.listen(port);
 server.on('listening', () => console.log("Listening on Port: " + port));
 server.on('error', e => console.log("Error runing server = ", e));
