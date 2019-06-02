@@ -42,7 +42,7 @@ const config = {
                             minimize: true,
                             sourceMap: true,
                             importLoaders: 1,
-                            localIdentName: '[local]___[hash:base64:5]',
+                            localIdentName: '[local]-[hash:base64:9]',
                         },
                     },
                     'sass-loader',
