@@ -6,10 +6,12 @@ const DIST_DIR = PUBLIC_DIR + '/dist';
 const devMode = process.env.NODE_ENV !== 'production';
 
 const config = {
-    entry: ['regenerator-runtime/runtime', __dirname + '/app/client/index.js'],
+    mode: devMode ? 'development' : 'production',
+    entry: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', 'regenerator-runtime/runtime', __dirname + '/app/client/index.js'],
     output: {
         path: DIST_DIR,
         filename: 'app.bundled.js',
+        publicPath: 'dist/',
     },
     module: {
         rules: [
@@ -28,19 +30,10 @@ const config = {
                 loader: 'svg-react-loader',
             },
             {
-                test: /\.css/,
-                loaders: ['style-loader', 'css-loader'],
-            },
-            {
-                test: /\.(scss|sass)$/,
+                test: /\.(css|scss|sass)$/,
                 exclude: /node_modules/,
                 loaders: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: devMode,
-                        },
-                    },
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -59,7 +52,7 @@ const config = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: PUBLIC_DIR + '/index.template.html',
-            filename: '../index.html',
+            filename: PUBLIC_DIR + '/index.html',
         }),
         new MiniCssExtractPlugin({
             filename: devMode ? '[name].[hash].css' : '[name].css',
