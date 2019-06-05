@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PUBLIC_DIR = __dirname + '/public';
 const DIST_DIR = PUBLIC_DIR + '/dist';
+const devMode = process.env.NODE_ENV !== 'production';
 
 const config = {
     entry: ['regenerator-runtime/runtime', __dirname + '/app/client/index.js'],
@@ -34,12 +35,16 @@ const config = {
                 test: /\.(scss|sass)$/,
                 exclude: /node_modules/,
                 loaders: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: devMode,
+                        },
+                    },
                     {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            minimize: true,
                             sourceMap: true,
                             importLoaders: 1,
                             localIdentName: '[local]-[hash:base64:9]',
@@ -57,8 +62,8 @@ const config = {
             filename: '../index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[hash].css',
-            chunkFilename: '[id].[hash].css',
+            filename: devMode ? '[name].[hash].css' : '[name].css',
+            chunkFilename: devMode ? '[id].[hash].css' : '[id].css',
         }),
     ],
 };
