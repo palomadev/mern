@@ -9,7 +9,7 @@
         "client": "open-cli http://localhost:3000",
         "build": "cross-env NODE_ENV=production webpack",
         "dev": "cross-env NODE_ENV=development npm-run-all --parallel dev:*",
-        "dev:clean": "cd ./public && git clean -dfx",
+        "dev:clean": "rm -rf ./public/dist ./public/index.html",
         "dev:server": "npm run server",
         "dev:client": "npm run client",
         "heroku:logs": "heroku logs --tail"

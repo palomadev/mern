@@ -1,10 +1,10 @@
-fix login issue token
 compare code with other projects
 finish signup process
 add design with bst
 add gulp
 add knex
 add jest
+add mongose seed
 copy mediaio structure
 add celebrate
 add orm for mysql and postgres
