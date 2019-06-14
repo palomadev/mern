@@ -37,8 +37,10 @@ module.exports = {
         });
         req.pipe(midleware);
     },
+    makeSalt: () => require('crypto').randomBytes(16).toString('base64'),
     keepsAwakeHeroku: async (interval = 300000) => {
         const http = require('http');
+        //Heroku limits free dynos, use this in case you need something alive for a specific period time
         //in order to make this works, run this command: heroku labs:enable runtime-dyno-metadata -a <app name>
         const { HEROKU_APP_NAME } = process.env;
         if (HEROKU_APP_NAME) {
