@@ -37,12 +37,14 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
+                            url: false,
                             modules: true,
                             sourceMap: true,
                             importLoaders: 1,
                             localIdentName: '[local]-[hash:base64:9]',
                         },
                     },
+                    'resolve-url-loader',
                     'sass-loader',
                 ],
             },
